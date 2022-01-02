@@ -1,0 +1,21 @@
+version: '2.1'
+services:
+  sourcegraph:
+    container_name: sourcegraph
+    image: 'sourcegraph/server:3.32.0'
+    volumes:
+      - 'config:/etc/sourcegraph'
+      - 'data:/var/opt/sourcegraph'
+    ports:
+      - '0.0.0.0:80:7080'
+      - '0.0.0.0:3370:3370'
+    networks:
+      - sourcegraph
+    restart: always
+
+volumes:
+  config:
+  data:
+
+networks:
+  sourcegraph:
